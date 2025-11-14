@@ -1,0 +1,4 @@
+packages:
+  - 'angular/'
+#  - 'react'
+#  - 'esm'

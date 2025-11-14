@@ -1,0 +1,25 @@
+{
+  "name": "doc-library",
+  "version": "0.0.0",
+  "private": "true",
+  "author": "Vivy Booman",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@angular-eslint/builder": "^20.2.0",
+    "@angular-eslint/eslint-plugin": "^20.2.0",
+    "@angular-eslint/eslint-plugin-template": "^20.2.0",
+    "@angular-eslint/schematics": "^20.2.0",
+    "@angular-eslint/template-parser": "^20.2.0",
+    "@eslint/js": "^9.24.0",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-sonarjs": "^3.0.2",
+    "eslint-plugin-unicorn": "^58.0.0",
+    "prettier": "^3.2.5",
+    "typescript": "~5.9.x"
+  },
+  "packageManager": "pnpm@10.18.0"
+}
