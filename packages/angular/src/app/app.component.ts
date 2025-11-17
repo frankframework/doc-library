@@ -1,7 +1,7 @@
 import { Component, computed, inject, Signal } from '@angular/core';
 import { FFDocService } from './ffdoc.service';
 import { KeyValuePipe } from '@angular/common';
-import { Elements } from '@common/ff-doc-base';
+import { Elements } from '../../../core/ff-doc-base';
 
 @Component({
   selector: 'app-root',

@@ -26,6 +26,9 @@ importers:
       '@eslint/js':
         specifier: ^9.24.0
         version: 9.39.1
+      '@microsoft/api-extractor':
+        specifier: ^7.55.0
+        version: 7.55.0(@types/node@24.10.1)
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.41.0
         version: 8.46.4(@typescript-eslint/parser@8.46.4(eslint@9.39.1)(typescript@5.9.3))(eslint@9.39.1)(typescript@5.9.3)

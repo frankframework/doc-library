@@ -1,0 +1,23 @@
+{
+  "name": "@frankframework/doc-library-core",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A powerful and easy-to-use library, designed to extract and process information from the FF! Doc JSON.",
+  "author": "Vivy Booman",
+  "license": "Apache-2.0",
+  "homepage": "https://frankframework.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankframework/doc-library.git",
+    "directory": "packages/core"
+  },
+  "packageManager": "pnpm@10.22.0",
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.55.0",
+    "unplugin-dts": "1.0.0-beta.0",
+    "vite": "^7.2.2"
+  }
+}

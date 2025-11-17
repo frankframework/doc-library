@@ -1,6 +1,6 @@
 import { Directive, inject, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
-import { LinkData, transformAsHtml, transformAsText } from '@common/javadoc';
-import { ElementClass } from '@common/frankdoc.types';
+import { LinkData, transformAsHtml, transformAsText } from '../../../../../core/javadoc';
+import { ElementClass } from '../../../../../core/frankdoc.types';
 
 export type TemplateContext = { $implicit: string };
 export type LinkTemplateContext = { $implicit: LinkData };
