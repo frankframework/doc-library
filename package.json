@@ -4,6 +4,9 @@
   "private": "true",
   "author": "Vivy Booman",
   "license": "Apache-2.0",
+  "scripts": {
+    "build": "pnpm -r build"
+  },
   "devDependencies": {
     "@angular-eslint/builder": "^20.2.0",
     "@angular-eslint/eslint-plugin": "^20.2.0",

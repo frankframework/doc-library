@@ -12,7 +12,9 @@
     "directory": "packages/angular/projects/ff-doc"
   },
   "peerDependencies": {
-    "@angular/core": "^20.2.2",
-    "@frankframework/doc-library-core": "workspace: ^"
+    "@angular/core": "^20.2.2"
+  },
+  "dependencies": {
+    "@frankframework/doc-library-core": "workspace:^"
   }
 }

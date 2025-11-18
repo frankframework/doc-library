@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "description": "A powerful and easy-to-use library, designed to extract and process information from the FF! Doc JSON.",
+  "module": "dist/doc-library-core.js",
+  "types": "dist/public-api.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Vivy Booman",
   "license": "Apache-2.0",
   "homepage": "https://frankframework.org",
@@ -17,7 +22,7 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.55.0",
-    "unplugin-dts": "1.0.0-beta.0",
+    "unplugin-dts": "1.0.0-beta.6",
     "vite": "^7.2.2"
   }
 }

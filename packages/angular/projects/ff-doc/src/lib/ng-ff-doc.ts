@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { computed, Signal, signal, WritableSignal } from '@angular/core';
-import { Elements, FFDocBase, Filters } from '../../../../../core/ff-doc-base';
-import { FFDocJson } from '../../../../../core/frankdoc.types';
+import { Elements, FFDocBase, FFDocJson, Filters } from '@frankframework/doc-library-core';
 
 export class NgFFDoc extends FFDocBase {
   public readonly enums: Signal<FFDocJson['enums']> = computed(() => this.ffDoc()?.enums ?? {});

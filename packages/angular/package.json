@@ -21,7 +21,8 @@
     "@angular/router": "^20.2.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.7.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "@frankframework/doc-library-core": "workspace:^"
   },
   "devDependencies": {
     "@angular/build": "^20.2.1",

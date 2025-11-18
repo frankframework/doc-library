@@ -5,10 +5,10 @@ export default {
   build: {
     lib: {
       entry: 'src/public-api.ts',
-      name: 'ff-doc-core',
       formats: ['es'],
     },
     sourcemap: true,
+    target: 'es2022',
   },
-  plugins: [dts({ bundleTypes: true, tsconfigPath: './tsconfig.json' })],
+  plugins: [dts({ tsconfigPath: './tsconfig.json' })],
 } satisfies UserConfig;
