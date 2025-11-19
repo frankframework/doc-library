@@ -1,5 +1,5 @@
-import { LinkData, transformAsHtml, transformAsText } from '../javadoc';
-import { ElementClass } from '../frankdoc.types';
+import { transformAsHtml, transformAsText } from '@frankframework/doc-library-core';
+import type { ElementClass, LinkData } from '@frankframework/doc-library-core';
 import { useMemo } from 'react';
 
 type InnerHTML = {

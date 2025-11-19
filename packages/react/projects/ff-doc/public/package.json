@@ -1,0 +1,23 @@
+{
+  "name": "@frankframework/doc-library-react",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A powerful and easy-to-use library, made for React, designed to extract and process information from the FF! Doc JSON.",
+  "module": "doc-library-react.js",
+  "types": "public-api.d.ts",
+  "author": "Vivy Booman",
+  "license": "Apache-2.0",
+  "homepage": "https://frankframework.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankframework/doc-library.git",
+    "directory": "packages/react/projects/ff-doc"
+  },
+  "peerDependencies": {
+    "react": "^19.1.0"
+  },
+  "dependencies": {
+    "@frankframework/doc-library-core": "^1.0.0"
+  }
+}
+

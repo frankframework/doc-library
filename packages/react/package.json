@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "//build": "react-router build",
+    "build": "vite -c vite.lib.config.ts build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
@@ -14,17 +14,22 @@
     "isbot": "^5.1.31",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router": "^7.9.2"
+    "react-router": "^7.9.2",
+    "@frankframework/doc-library-core": "workspace:^"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.55.0",
     "@react-router/dev": "^7.9.2",
     "@tailwindcss/vite": "^4.1.13",
     "@types/node": "^22",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.1.1",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
+    "unplugin-dts": "1.0.0-beta.6",
     "vite": "^7.1.7",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "packageManager": "pnpm@10.22.0"
 }

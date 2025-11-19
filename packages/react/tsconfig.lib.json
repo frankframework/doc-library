@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+//    "noEmit": true
+  },
+  "include": [
+    "projects/ff-doc/src/**/*.ts"
+  ],
+  "exclude": [
+    "projects/ff-doc/src/**/*.spec.ts"
+  ]
+}

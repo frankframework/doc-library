@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Elements, Filters } from '../ff-doc-base';
-import { FFDoc } from '../ff-doc';
-import { FFDocJson } from '../frankdoc.types';
+import { FFDoc } from '@frankframework/doc-library-core';
+import type { Elements, FFDocJson, Filters } from '@frankframework/doc-library-core';
 
 type FFDocHook = {
   ffDoc: FFDocJson | null;

@@ -1,9 +1,8 @@
 import { Component, computed, inject, OnInit, Signal } from '@angular/core';
 import { KeyValuePipe } from '@angular/common';
 import { Elements } from '@frankframework/doc-library-core';
-import { JavadocTransformDirective } from '@frankframework/doc-library-ng';
+import { JavadocTransformDirective, NgFFDoc } from '@frankframework/doc-library-ng';
 import { HttpClient } from '@angular/common/http';
-import { NgFFDoc } from '../../projects/ff-doc/src/lib/ng-ff-doc';
 
 @Component({
   selector: 'app-root',

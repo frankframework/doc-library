@@ -15,6 +15,6 @@
     "@angular/core": "^20.2.2"
   },
   "dependencies": {
-    "@frankframework/doc-library-core": "workspace:^"
+    "@frankframework/doc-library-core": "^1.0.0"
   }
 }
