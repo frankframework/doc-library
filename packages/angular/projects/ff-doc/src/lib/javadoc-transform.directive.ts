@@ -1,5 +1,5 @@
 import { Directive, inject, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
-import { ElementClass, LinkData, transformAsHtml, transformAsText } from '@frankframework/doc-library-core';
+import { ElementsWithInfo, LinkData, transformAsHtml, transformAsText } from '@frankframework/doc-library-core';
 
 export type TemplateContext = { $implicit: string };
 export type LinkTemplateContext = { $implicit: LinkData };
@@ -13,7 +13,7 @@ export type LinkTemplateContext = { $implicit: LinkData };
 })
 export class JavadocTransformDirective implements OnChanges {
   @Input({ required: true }) fdJavadocTransformOf?: string;
-  @Input({ required: true }) fdJavadocTransformElements!: Record<string, ElementClass> | null;
+  @Input({ required: true }) fdJavadocTransformElements!: Record<string, ElementsWithInfo> | null;
   @Input() fdJavadocTransformLink?: TemplateRef<LinkTemplateContext>;
   @Input() fdJavadocTransformAsText = false;
 

@@ -1,6 +1,6 @@
 {
   "name": "@frankframework/doc-library-ng",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A powerful and easy-to-use library, made for Angular, designed to extract and process information from the FF! Doc JSON.",
   "main": "",
   "author": "Vivy Booman",
@@ -12,9 +12,9 @@
     "directory": "packages/angular/projects/ff-doc"
   },
   "peerDependencies": {
-    "@angular/core": "^20.2.2"
+    "@angular/core": "^20.2.2 || ^21.0.0"
   },
   "dependencies": {
-    "@frankframework/doc-library-core": "^1.0.0"
+    "@frankframework/doc-library-core": "~1.0.1"
   }
 }
