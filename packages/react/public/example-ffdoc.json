@@ -11,6 +11,10 @@
     ]
   },
   "elements": {
+    "org.frankframework.test.TestElement": {
+      "name": "TestElement",
+      "description": "This is a test element used for demonstration purposes. See {@link FixedResultSender}"
+    },
     "org.frankframework.senders.FixedResultSender": {
       "name": "FixedResultSender",
       "description": "FixedResultSender, same behaviour as {@link FixedResultPipe}, but now as a ISender.",
@@ -97,6 +101,10 @@
     }
   },
   "elementNames": {
+    "TestElement": {
+      "labels": {},
+      "className": "org.frankframework.test.TestElement"
+    },
     "FixedResultSender": {
       "labels": {
         "Components": "Senders",

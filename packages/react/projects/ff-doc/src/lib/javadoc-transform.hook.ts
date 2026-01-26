@@ -1,5 +1,5 @@
 import { transformAsHtml, transformAsText } from '@frankframework/doc-library-core';
-import type { ElementClass, LinkData } from '@frankframework/doc-library-core';
+import type { ElementsWithInfo, LinkData } from '@frankframework/doc-library-core';
 import { useMemo } from 'react';
 
 type InnerHTML = {
@@ -8,7 +8,7 @@ type InnerHTML = {
 
 function javadocTransform(
   javadoc: string | undefined,
-  elements: Record<string, ElementClass> | null,
+  elements: Record<string, ElementsWithInfo> | null,
   asText = true,
   // eslint-disable-next-line no-unused-vars
   linkTemplate?: (link: LinkData) => string,
@@ -43,8 +43,8 @@ function javadocTransform(
 
 export function useJavadocTransform(
   javadoc: string | undefined,
-  elements: Record<string, ElementClass> | null,
-  asText = true,
+  elements: Record<string, ElementsWithInfo> | null,
+  asText = false,
   // eslint-disable-next-line no-unused-vars
   linkTemplate?: (link: LinkData) => string,
 ): InnerHTML {

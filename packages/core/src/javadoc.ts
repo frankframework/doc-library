@@ -1,6 +1,11 @@
-import { ElementClass } from './frankdoc.types';
+import { ElementClass, ElementInfo } from './frankdoc.types';
 
-export type LinkData = { text: string; href?: string };
+export type ElementsWithInfo = ElementClass & ElementInfo;
+export type LinkData = {
+  text: string;
+  href?: string;
+  element?: ElementsWithInfo;
+};
 
 // eslint-disable-next-line sonarjs/slow-regex
 export const markdownLinkRegex = /\[([^\]]+)]\(([^)]+)\)/g; // old regex: /\[(.*?)\]\((.+?)\)/g
@@ -9,7 +14,7 @@ export const linkRegex = /(?:{@link\s(.*?)})/g;
 
 export function transformAsHtml(
   javadoc: string,
-  elements: Record<string, ElementClass>,
+  elements: Record<string, ElementsWithInfo>,
   hasCustomLinkTransform: boolean,
 ): string[] {
   let value = `${javadoc}`;
@@ -33,7 +38,7 @@ export function transformAsHtml(
   return [value];
 }
 
-export function transformAsText(javadoc: string, elements: Record<string, ElementClass>): string[] {
+export function transformAsText(javadoc: string, elements: Record<string, ElementsWithInfo>): string[] {
   let value = `${javadoc}`;
   value = value.replaceAll(markdownLinkRegex, '$1($2)');
   value = value.replaceAll(tagsRegex, '');
@@ -55,7 +60,7 @@ export function defaultLinkTransformation(linkData: LinkData): string {
  * e.g. 'PipeLineSession pipeLineSession' for `{@link PipeLineSession pipeLineSession}`
  * @param elements
  */
-export function getLinkData(captureGroup: string, elements: Record<string, ElementClass>): LinkData {
+export function getLinkData(captureGroup: string, elements: Record<string, ElementsWithInfo>): LinkData {
   const hashPosition = captureGroup.indexOf('#'),
     isMethod = hashPosition !== -1,
     elementString = isMethod ? captureGroup.split('#')[0] : captureGroup;
@@ -69,7 +74,7 @@ export function getLinkData(captureGroup: string, elements: Record<string, Eleme
 
   const element = findElement(elements, elementParts[0]);
   if (!element) return { text: name };
-  return { href: element.name, text: name };
+  return { href: element.className, text: name, element };
 }
 
 /** Handle links to internal class methods  */
@@ -91,7 +96,7 @@ function parseLinkName(elementParts: string[], isMethod: boolean, captureGroup: 
   return elementName;
 }
 
-function findElement(elements: Record<string, ElementClass>, simpleName: string): ElementClass | null {
+function findElement(elements: Record<string, ElementsWithInfo>, simpleName: string): ElementsWithInfo | null {
   if (Object.keys(elements).length === 0) return null;
   const element = elements[simpleName];
   if (element) return element;
