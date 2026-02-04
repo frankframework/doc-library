@@ -7,7 +7,7 @@ export function loader() {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  const { elements } = useFFDoc('/example-ffdoc.json');
+  const { elements } = useFFDoc();
 
   return (
     <>
