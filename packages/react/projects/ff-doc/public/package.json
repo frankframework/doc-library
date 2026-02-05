@@ -1,6 +1,6 @@
 {
   "name": "@frankframework/doc-library-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "A powerful and easy-to-use library, made for React, designed to extract and process information from the FF! Doc JSON.",
   "module": "doc-library-react.js",

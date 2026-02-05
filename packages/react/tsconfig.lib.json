@@ -5,7 +5,8 @@
 //    "noEmit": true
   },
   "include": [
-    "projects/ff-doc/src/**/*.ts"
+    "projects/ff-doc/src/**/*.ts",
+    "projects/ff-doc/src/**/*.tsx"
   ],
   "exclude": [
     "projects/ff-doc/src/**/*.spec.ts"
