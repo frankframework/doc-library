@@ -6,6 +6,8 @@ export type LinkData = {
   href?: string;
   element?: ElementsWithInfo;
 };
+type TransformedJavadocPart = string | LinkData;
+export type TransformedJavadoc = TransformedJavadocPart[];
 
 // eslint-disable-next-line sonarjs/slow-regex
 export const markdownLinkRegex = /\[([^\]]+)]\(([^)]+)\)/g; // old regex: /\[(.*?)\]\((.+?)\)/g
@@ -16,38 +18,33 @@ export function transformAsHtml(
   javadoc: string,
   elements: Record<string, ElementsWithInfo>,
   hasCustomLinkTransform: boolean,
-): string[] {
-  let value = `${javadoc}`;
-  value = value.replaceAll(markdownLinkRegex, '<a target="_blank" href="$2" alt="$1">$1</a>');
+): TransformedJavadoc {
+  let transformed = javadoc
+    .replaceAll(markdownLinkRegex, '<a target="_blank" href="$2" alt="$1">$1</a>')
+    .replaceAll(String.raw`\"`, '"');
 
   if (hasCustomLinkTransform) {
-    value = value.replaceAll(linkRegex, (_, captureGroup) => {
-      const linkData = getLinkData(captureGroup, elements);
-      if (linkData.href) return `\\"${JSON.stringify(linkData)}\\"`;
-      return linkData.text;
-    });
-    return value.split(String.raw`\"`);
+    return transformAsCustomHtml(transformed, elements);
   }
-  value = value.replaceAll(linkRegex, (_, captureGroup) => {
+
+  transformed = transformed.replaceAll(linkRegex, (_, captureGroup) => {
     const linkData = getLinkData(captureGroup, elements);
     if (linkData.href) return defaultLinkTransformation(linkData);
     return linkData.text;
   });
-
-  value = value.replaceAll(String.raw`\"`, '"');
-  return [value];
+  return [transformed];
 }
 
-export function transformAsText(javadoc: string, elements: Record<string, ElementsWithInfo>): string[] {
-  let value = `${javadoc}`;
-  value = value.replaceAll(markdownLinkRegex, '$1($2)');
-  value = value.replaceAll(tagsRegex, '');
-  value = value.replaceAll(linkRegex, (_: string, captureGroup: string) => {
-    const linkData = getLinkData(captureGroup, elements);
-    return linkData.text;
-  });
-  value = value.replaceAll(String.raw`\"`, '"');
-  return [value];
+export function transformAsText(javadoc: string, elements: Record<string, ElementsWithInfo>): TransformedJavadoc {
+  const text = javadoc
+    .replaceAll(markdownLinkRegex, '$1($2)')
+    .replaceAll(tagsRegex, '')
+    .replaceAll(linkRegex, (_: string, captureGroup: string) => {
+      const linkData = getLinkData(captureGroup, elements);
+      return linkData.text;
+    })
+    .replaceAll(String.raw`\"`, '"');
+  return [text];
 }
 
 export function defaultLinkTransformation(linkData: LinkData): string {
@@ -77,6 +74,19 @@ export function getLinkData(captureGroup: string, elements: Record<string, Eleme
   return { href: element.className, text: name, element };
 }
 
+function transformAsCustomHtml(javadoc: string, elements: Record<string, ElementsWithInfo>): TransformedJavadoc {
+  const transformedParts: TransformedJavadocPart[] = [];
+  let lastIndex = 0;
+  for (const match of javadoc.matchAll(linkRegex)) {
+    const [string, captureGroup] = match;
+    const linkData = getLinkData(captureGroup, elements);
+    transformedParts.push(javadoc.slice(lastIndex, match.index), linkData.href ? linkData : linkData.text);
+    lastIndex = match.index + string.length;
+  }
+  if (lastIndex < javadoc.length - 1) transformedParts.push(javadoc.slice(lastIndex));
+  return transformedParts;
+}
+
 /** Handle links to internal class methods  */
 function getInternalMethodReference(captureGroup: string, hashPosition: number): string {
   const method = captureGroup.slice(hashPosition),
@@ -96,11 +106,15 @@ function parseLinkName(elementParts: string[], isMethod: boolean, captureGroup: 
   return elementName;
 }
 
-function findElement(elements: Record<string, ElementsWithInfo>, simpleName: string): ElementsWithInfo | null {
+function findElement(elements: Record<string, ElementsWithInfo>, name: string): ElementsWithInfo | null {
   if (Object.keys(elements).length === 0) return null;
-  const element = elements[simpleName];
+  const element = elements[name] ?? Object.values(elements).find((element) => element.name === name);
   if (element) return element;
 
-  console.warn(`could not find element [${simpleName}]`);
+  console.warn(`could not find element [${name}]`);
   return null;
+}
+
+function normaliseQuote(value: string): string {
+  return value.replaceAll(String.raw`\"`, '"');
 }
