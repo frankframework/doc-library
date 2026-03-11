@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-root',
   imports: [KeyValuePipe, JavadocTransformDirective],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   protected elements: Signal<Elements> = computed(() => this.ffdoc.elements() ?? {});
