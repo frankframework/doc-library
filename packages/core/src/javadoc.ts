@@ -108,13 +108,9 @@ function parseLinkName(elementParts: string[], isMethod: boolean, captureGroup: 
 
 function findElement(elements: Record<string, ElementsWithInfo>, name: string): ElementsWithInfo | null {
   if (Object.keys(elements).length === 0) return null;
-  const element = elements[name] ?? Object.values(elements).find((element) => element.name === name);
+  const element = elements[name] ?? Object.values(elements).find((element) => element.className === name);
   if (element) return element;
 
   console.warn(`could not find element [${name}]`);
   return null;
-}
-
-function normaliseQuote(value: string): string {
-  return value.replaceAll(String.raw`\"`, '"');
 }

@@ -13,7 +13,7 @@
   "elements": {
     "org.frankframework.test.TestElement": {
       "name": "TestElement",
-      "description": "This is a test element used for demonstration purposes. See {@link FixedResultSender}"
+      "description": "This is a test element used for demonstration purposes. See {@link FixedResultSender} or {@link org.frankframework.senders.FixedResultSender} for real examples."
     },
     "org.frankframework.senders.FixedResultSender": {
       "name": "FixedResultSender",

@@ -28,24 +28,15 @@ export class JavadocTransformDirective implements OnChanges {
       : transformAsHtml(this.fdJavadocTransformOf, this.fdJavadocTransformElements, !!this.fdJavadocTransformLink);
     this.viewContainerRef.clear();
 
-    for (const partIndexString in javadocParts) {
-      const partIndex = +partIndexString;
-      const part = javadocParts[partIndex];
-
-      // links are always add odd positions in the array
-      if (this.fdJavadocTransformLink && partIndex % 2 !== 0 && part.startsWith('{')) {
-        try {
-          const linkData: LinkData = JSON.parse(part);
-          this.viewContainerRef.createEmbeddedView<LinkTemplateContext>(this.fdJavadocTransformLink, {
-            $implicit: linkData,
-          });
-        } catch (error) {
-          console.error("Can't parse link data", error);
-        }
+    for (const part of javadocParts) {
+      if (this.fdJavadocTransformLink && typeof part === 'object') {
+        this.viewContainerRef.createEmbeddedView<LinkTemplateContext>(this.fdJavadocTransformLink, {
+          $implicit: part as LinkData,
+        });
         continue;
       }
       this.viewContainerRef.createEmbeddedView<TemplateContext>(this.templateRef, {
-        $implicit: part,
+        $implicit: part as string,
       });
     }
   }

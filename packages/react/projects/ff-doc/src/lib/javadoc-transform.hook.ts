@@ -21,24 +21,9 @@ function javadocTransform(
     ? transformAsText(javadoc, elements)
     : transformAsHtml(javadoc, elements, hasCustomLinkTransform);
 
-  let transformedResult = '';
-  for (const partIndexString in javadocParts) {
-    const partIndex = +partIndexString;
-    const part = javadocParts[partIndex];
-
-    // links are always add odd positions in the array
-    if (hasCustomLinkTransform && partIndex % 2 !== 0 && part.startsWith('{')) {
-      try {
-        const linkData: LinkData = JSON.parse(part);
-        transformedResult += linkTemplate(linkData);
-      } catch (error) {
-        console.error("Can't parse link data", error);
-      }
-      continue;
-    }
-    transformedResult += part;
-  }
-  return transformedResult;
+  return javadocParts
+    .map((part) => (hasCustomLinkTransform && typeof part === 'object' ? linkTemplate(part as LinkData) : part))
+    .join('');
 }
 
 export function useJavadocTransform(
