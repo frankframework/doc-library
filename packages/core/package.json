@@ -1,6 +1,6 @@
 {
   "name": "@frankframework/doc-library-core",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "type": "module",
   "description": "A powerful and easy-to-use library, designed to extract and process information from the FF! Doc JSON.",
   "module": "dist/doc-library-core.js",
